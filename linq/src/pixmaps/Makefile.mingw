@@ -1,0 +1,11 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for win32 (mingw) version of LinQ pixmaps
+#
+
+include ./Makefile.am
+
+install:
+	  mkdir -p ../../win32-install-dir/pixmaps
+	  cp $(pixmaps_DATA) ../../win32-install-dir/pixmaps

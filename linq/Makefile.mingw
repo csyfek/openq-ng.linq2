@@ -1,0 +1,36 @@
+# Makefile.mingw
+# 
+# Author: huzheng_001@163.com
+# Date 2003.07.04
+# Description: Top Makefile for win32 (mingw) port of LinQ
+#
+
+LIBLINQ_DIR = ../liblinq
+DB_TOP := ../win32-dev/db
+GTKMM_TOP := ../win32-dev/gtkmm
+LINQ_INSTALL_DIR = ./win32-install-dir
+LINQ_SRC = ./src
+
+all:	
+	$(MAKE)  -C $(LIBLINQ_DIR) -f Makefile.mingw
+	cp config.h.mingw config.h
+	$(MAKE)  -C $(LINQ_SRC) -f Makefile.mingw
+
+install: all
+	rm -rf $(LINQ_INSTALL_DIR)
+	mkdir -p $(LINQ_INSTALL_DIR)
+	$(MAKE) -C ./po -f Makefile.mingw install
+	$(MAKE) -C $(LINQ_SRC) -f Makefile.mingw install
+	$(MAKE) -C ./src/face -f Makefile.mingw install
+	$(MAKE) -C ./src/pixmaps -f Makefile.mingw install
+	cp linq.png $(LINQ_INSTALL_DIR)/pixmaps
+	cp $(LIBLINQ_DIR)/src/liblinq.dll $(LINQ_INSTALL_DIR)
+	cp $(DB_TOP)/libdb40.dll $(LINQ_INSTALL_DIR)
+	cp $(GTKMM_TOP)/bin/*.dll $(LINQ_INSTALL_DIR)
+
+clean:
+	$(MAKE) -C $(LIBLINQ_DIR) -f Makefile.mingw clean
+	$(MAKE) -C $(LINQ_SRC) -f Makefile.mingw clean
+	rm -rf config.h
+	rm -rf $(LINQ_INSTALL_DIR)
+	rm -rf linq*.exe

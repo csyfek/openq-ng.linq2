@@ -1,0 +1,16 @@
+Set up your win32 build environment:
+1. Install Cygwin Bash shell. Make sure to select Unix file mode during setup. only install the default packages will be ok, don't install its gcc package. (http://cygwin.com). i assume that you install it at c:\cygwin
+2. Install MinGw(http://mingw.sourceforge.net). Download http://prdownloads.sourceforge.net/mingw/MinGW-2.0.0-3.exe?download and http://prdownloads.sourceforge.net/mingw/mingw32-make-3.80.0-3.exe?download . install both of them at c:\cygwin\mingw
+3.edit c:\cygwin\etc\profile. change the first line to:
+PATH="/mingw/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+4.install GTK+ devel pakage. (http://sourceforge.net/projects/gtk-win). Install the Development Environment package to ~/win32-dev/gtk_2_0.
+5.install GtkMM devel pakage. (http://www.pcpm.ucl.ac.be/~gustin/win32_ports/). Install it to ~/win32-dev/gtkmm/
+6.download db from www.sleepycat.com, compile it using VC, and then put the "db.h libdb41d.dll libdb41d.exp libdb41d.lib" into ~/win32-dev/db
+5.install NSIS. (http://www.nullsoft.com/free/nsis)
+6.extract linq-2.0.0.tar.bz2 to ~/
+cd ~/linq-2.0.0
+mingw32-make -f Makefile.mingw install
+7.double click the linq-2.0.0/linq-installer.nsi, it will generate linq-2.0.0.exe
+
+Hu Zheng
+2003.07.29

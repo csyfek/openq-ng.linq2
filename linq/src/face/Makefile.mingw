@@ -1,0 +1,11 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for win32 (mingw) version of LinQ face
+#
+
+include ./Makefile.am
+
+install:
+	  mkdir -p ../../win32-install-dir/face
+	  cp $(face_DATA) ../../win32-install-dir/face

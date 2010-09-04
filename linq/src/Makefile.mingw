@@ -1,0 +1,158 @@
+# Makefile.mingw
+# 
+# Author: huzheng_001@163.com
+# Date 2003.07.04
+# Description: Makefile for win32 (mingw) port of LinQ
+#
+
+
+#
+# PATHS
+#
+
+INCLUDE_DIR :=		.
+
+GTK_TOP :=		../../win32-dev/gtk_2_0
+GTKMM_TOP :=		../../win32-dev/gtkmm
+DB_TOP :=		../../win32-dev/db
+LIBLINQ_TOP = ../../liblinq
+LINQ_TOP :=		..
+LINQ_ROOT := 	.
+LINQ_INSTALL_DIR :=	$(LINQ_TOP)/win32-install-dir
+
+
+##
+## VARIABLE DEFINITIONS
+##
+
+TARGET = linq
+
+# Compiler Options
+
+CFLAGS =
+
+DEFINES =
+
+LDFLAGS = -mwindows
+
+##
+## INCLUDE  MAKEFILES
+##
+
+include $(LINQ_TOP)/src/win32/global.mak
+
+##
+## INCLUDE PATHS
+##
+
+INCLUDE_PATHS +=	-I$(LINQ_ROOT) \
+			-I$(GTK_TOP)/include \
+			-I$(GTK_TOP)/include/gtk-2.0 \
+			-I$(GTK_TOP)/include/glib-2.0 \
+			-I$(GTK_TOP)/include/pango-1.0 \
+			-I$(GTK_TOP)/include/atk-1.0 \
+			-I$(GTK_TOP)/lib/glib-2.0/include \
+			-I$(GTK_TOP)/lib/gtk-2.0/include \
+			-I$(GTKMM_TOP)/include/gtkmm-2.0 \
+			-I$(GTKMM_TOP)/lib/gtkmm-2.0/include \
+			-I$(GTKMM_TOP)/include/sigc++-1.2 \
+			-I$(GTKMM_TOP)/lib/sigc++-1.2/include \
+			-I$(DB_TOP)/ \
+			-I$(LINQ_TOP) \
+			-I$(LIBLINQ_TOP)/include
+
+
+
+LIB_PATHS =		-L$(GTK_TOP)/lib \
+			-L$(GTKMM_TOP)/lib \
+			-L$(DB_TOP) \
+			-L$(LIBLINQ_TOP)/src
+
+
+##
+##  SOURCES, OBJECTS
+##
+
+C_SRC =			gtkimhtml.c
+
+CPP_SRC =		LinQ.cpp \
+			LinqMain.cpp \
+			skin.cpp \
+			gtksocketregistry.cpp \
+			GtkSocket.cpp \
+			LinqWindow.cpp \
+			LinqUsers.cpp \
+			LoginDlg.cpp \
+			MainWin.cpp \
+			MainWin_ContactView.cpp \
+			MainWin_ServiceView.cpp \
+			MainWin_MobileView.cpp \
+			MainWin_ChainView.cpp \
+			icqdb.cpp \
+			LinqInfo.cpp \
+			LinqOption.cpp \
+			UserInfoDlg.cpp \
+			sha.cpp \
+			SendMsgDlg.cpp \
+			SysMsgDlg.cpp \
+			SearchDlg.cpp \
+			SendFileDlg.cpp \
+			RegWizard.cpp
+
+RC_SRC =		win32/linqrc.rc
+
+
+OBJECTS = $(C_SRC:%.c=%.o) $(CPP_SRC:%.cpp=%.o) $(RC_SRC:%.rc=%.o)
+
+LIBADD = 
+
+##
+## LIBRARIES
+##
+
+LIBS = -lgtk-win32-2.0 -lpango-1.0 -lglib-2.0 -lgdk-win32-2.0 -lgmodule-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lgtkmm-2.0 -lgdkmm-2.0 -latkmm-1.0 -lpangomm-1.0 -lglibmm-2.0 -lsigc-1.2 -lgdi32 -lws2_32 -lintl -liconv -llibdb40 -lm -lliblinq
+
+
+##
+## RULES
+##
+
+# How to make a C file
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE_PATHS) -o $@ -c $<
+
+# How to make a CPP file
+
+%.o: %.cpp
+	$(CPPC) $(CFLAGS) $(DEFINES) $(INCLUDE_PATHS) -o $@ -c $<
+
+# How to make an RC file
+%.o: %.rc
+	windres -i $< -o $@
+
+##
+## TARGET DEFINITIONS
+##
+
+.PHONY: all clean
+
+all: $(TARGET).exe
+
+#
+# BUILD EXE
+#
+
+$(TARGET).exe: $(OBJECTS) $(LIBADD)
+	$(CPPC) $(LDFLAGS) $(OBJECTS) $(LIBADD) $(LIB_PATHS) $(LIBS) -o $(TARGET).exe
+
+install:
+	cp ./linq.exe $(LINQ_INSTALL_DIR)
+
+##
+## CLEAN RULES
+##
+
+clean:
+	rm -rf *.o
+	rm -rf $(TARGET).exe

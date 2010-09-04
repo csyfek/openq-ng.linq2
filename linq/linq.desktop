@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LinQ
+Comment=LinQ Instant Messaging Client
+Comment[zh_CN]=LinQ 即时通讯软件客户端
+Exec=linq
+Terminal=0
+Type=Application
+Icon=linq.png
+Categories=Application;Network;

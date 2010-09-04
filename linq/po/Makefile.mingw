@@ -1,0 +1,91 @@
+# Makefile.mingw
+# 
+# Description: Makefile to generate mo files
+#
+
+PACKAGE = linq
+
+##
+## PATHS
+##
+
+srcdir = .
+LINQ_TOP = ..
+LINQ_INSTALL_DIR = ../win32-install-dir
+LOCALEDIR = $(LINQ_INSTALL_DIR)/locale
+GTK_BIN = ../../win32-dev/gtk_2_0/bin
+
+##
+## TOOLS
+##
+
+GMSGFMT = $(GTK_BIN)/msgfmt
+MSGFMT = $(GTK_BIN)/msgfmt
+XGETTEXT = $(GTK_BIN)/xgettext
+MSGMERGE = $(GTK_BIN)/msgmerge
+
+
+.SUFFIXES:
+.SUFFIXES: .c .o .po .pot .pox .gmo .mo
+
+
+##
+## SOURCES, OBJECTS
+##
+
+CATALOGS =  zh_CN.gmo
+
+POTFILES = \
+		     ../src/LoginDlg.cpp
+
+
+##
+## RULES
+##
+
+.pot.pox:
+	$(MAKE) $(PACKAGE).pot
+	$(MSGMERGE) $< $(srcdir)/$(PACKAGE).pot -o $*.pox
+
+.po.mo:
+	$(MSGFMT) -o $@ $<
+
+.po.gmo:
+	rm -f $@ && $(GMSGFMT) --statistics -o $@ $<
+
+
+##
+## TARGETS
+##
+
+
+all: $(CATALOGS)
+
+$(PACKAGE).pot: $(POTFILES) POTFILES.in
+	$(XGETTEXT) --default-domain=$(PACKAGE) --directory=$(LINQ_TOP) \
+	  --add-comments --keyword=_ --keyword=N_ \
+	  --files-from=$(srcdir)/POTFILES.in \
+	&& test ! -f $(PACKAGE).po \
+	   || ( rm -f $(srcdir)/$(PACKAGE).pot \
+		&& mv $(PACKAGE).po $(srcdir)/$(PACKAGE).pot )
+
+install: all
+	mkdir -p $(LOCALEDIR)
+	@catalogs='$(CATALOGS)'; \
+	for cat in $$catalogs; do \
+	  cat=`basename $$cat`; \
+	  lang=`echo $$cat | sed 's/\.gmo$$//'`; \
+	  dir=$(LOCALEDIR)/$$lang/LC_MESSAGES; \
+	  mkdir -p $$dir; \
+	  if test -r $$cat; then \
+	    cp $$cat $$dir/$(PACKAGE).mo; \
+	    echo "installing $$cat as $$dir/$(PACKAGE).mo"; \
+	  else \
+	    cp $(srcdir)/$$cat $$dir/$(PACKAGE).mo; \
+	    echo "installing $(srcdir)/$$cat as" \
+		 "$$dir/$(PACKAGE).mo"; \
+	  fi; \
+	done
+
+clean:
+	rm -f *.gmo *.pot *.pox

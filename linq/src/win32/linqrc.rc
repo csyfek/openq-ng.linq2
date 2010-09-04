@@ -1,0 +1,3 @@
+#include "resource.h"
+
+LINQ_ICON		ICON "../linq.ico"

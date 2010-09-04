@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2003-08-05 15:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/LoginDlg.cpp:15
+msgid "save password"
+msgstr ""
+
+#: src/LoginDlg.cpp:16
+msgid "login invisible"
+msgstr ""
+
+#: src/LoginDlg.cpp:20
+msgid "LinQ user login"
+msgstr ""
+
+#: src/LoginDlg.cpp:35
+msgid "user name:"
+msgstr ""
+
+#: src/LoginDlg.cpp:43
+msgid "user password:"
+msgstr ""
+
+#: src/LoginDlg.cpp:72
+msgid "Login"
+msgstr ""
+
+#: src/LoginDlg.cpp:75
+msgid "Cancel"
+msgstr ""
+
+#: src/LoginDlg.cpp:78
+msgid "Register wizard"
+msgstr ""
+
+#: src/LoginDlg.cpp:122
+msgid "Please input the password!"
+msgstr ""
+
+#: src/LoginDlg.cpp:130
+msgid "The db currupted, use register ward to rebuild db?"
+msgstr ""
+
+#: src/LoginDlg.cpp:146
+msgid "The password may be wrong, input again?"
+msgstr ""

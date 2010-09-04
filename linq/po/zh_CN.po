@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# HuZheng <huzheng_001@163.com>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MoMo 2.0.0\n"
+"POT-Creation-Date: 2003-08-05 15:20+0800\n"
+"PO-Revision-Date: 2003-04-14 10:32+0800\n"
+"Last-Translator: HuZheng <huzheng_001@163.com>\n"
+"Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/LoginDlg.cpp:15
+msgid "save password"
+msgstr "保存密码"
+
+#: src/LoginDlg.cpp:16
+msgid "login invisible"
+msgstr "隐身登录"
+
+#: src/LoginDlg.cpp:20
+#, fuzzy
+msgid "LinQ user login"
+msgstr "MoMo用户登录"
+
+#: src/LoginDlg.cpp:35
+msgid "user name:"
+msgstr "用户名称："
+
+#: src/LoginDlg.cpp:43
+msgid "user password:"
+msgstr "用户密码："
+
+#: src/LoginDlg.cpp:72
+msgid "Login"
+msgstr "登录"
+
+#: src/LoginDlg.cpp:75
+msgid "Cancel"
+msgstr "取消"
+
+#: src/LoginDlg.cpp:78
+msgid "Register wizard"
+msgstr "注册向导"
+
+#: src/LoginDlg.cpp:122
+msgid "Please input the password!"
+msgstr ""
+
+#: src/LoginDlg.cpp:130
+msgid "The db currupted, use register ward to rebuild db?"
+msgstr ""
+
+#: src/LoginDlg.cpp:146
+msgid "The password may be wrong, input again?"
+msgstr ""
