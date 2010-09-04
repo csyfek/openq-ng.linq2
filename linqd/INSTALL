@@ -1,0 +1,53 @@
+Running linqd needs mysql installed, you can download it from
+http://www.mysql.com
+
+1) Install the linqd rpm package:
+==============================
+shell> rpm -Uvh linqd-*.rpm
+
+You can find the INSTALL document file in /etc/linqd/install/
+
+2) Configure mysql:
+==============================
+For Simplicity, we assume that the database name, user name and
+user password are all 'linq', But you can change this if you want.
+
+a) Add a new user and a new database:
+shell> mysql -uroot -p
+mysql> CREATE DATABASE linq;
+mysql> GRANT ALL ON linq.* TO linq@localhost IDENTIFIED BY 'linq';
+mysql> quit
+
+b) Create tables:
+shell> mysql -ulinq -Dlinq -p < /etc/linqd/install/linq.sql
+password: linq
+
+c) Edit /etc/linqd/*.conf
+=============================
+Edit these files to suit your needs.
+
+Notice: you sould "chmod 0600 *.conf" to make these file is not readable by 
+other users, as them contains the database user password.
+
+Note: if you changed the database user password, you need to edit 
+"c2s.conf", "linqd.conf" and "sm.conf".
+
+
+
+3) Run linqd:
+==============================
+shell> service linqd start
+
+
+4) manage modules dynamically.
+==============================
+You can use linqd's admin modules to dynamically start/stop linqd modules:
+
+shell> telnet localhost 2323
+admin > ls
+admin > start mod_presence
+admin > stop mod_message
+admin > quit
+
+
+Any problem, please contact Zhang Yong <z-yong163@163.com> or Hu Zheng <huzheng_001@163.com>.

@@ -1,0 +1,88 @@
+#!/bin/bash
+#
+# linqd	This shell script takes care of starting and stopping
+#		the LinQ Server (linqd).
+#
+# chkconfig: - 80 10
+# description:	LinQ Instant Messaging server.
+# processname: linqd
+# config: /etc/linqd/*.conf
+# pidfile: /var/run/linqd/*.pid
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+
+start(){
+# sleep 5 to wait MySQL.
+	(sleep 5; /usr/bin/linqd >/dev/null 2>&1) &
+    action $"Starting linqd: " /bin/true
+	(sleep 5; /usr/bin/linq_c2s >/dev/null 2>&1) &
+    action $"Starting linq_c2s: " /bin/true
+	(sleep 5; /usr/bin/linq_sm >/dev/null 2>&1) &
+    action $"Starting linq_sm: " /bin/true
+	(sleep 5; /usr/bin/linq_httpd >/dev/null 2>&1) &
+    action $"Starting linq_httpd: " /bin/true
+	(sleep 5; /usr/bin/linq_s2s >/dev/null 2>&1) &
+    action $"Starting linq_s2s: " /bin/true
+	(sleep 5; /usr/bin/linq_resolver >/dev/null 2>&1) &
+    action $"Starting linq_resolver: " /bin/true
+	(sleep 5; /usr/bin/linq_logd >/dev/null 2>&1) &
+    action $"Starting linq_logd: " /bin/true
+	return 0
+}
+
+stop(){
+	echo -n $"Shutting down linqd: "
+	killproc linqd
+	echo -n -e $"\nShutting down linq_c2s: "
+	killproc linq_c2s
+	echo -n -e $"\nShutting down linq_sm: "
+	killproc linq_sm
+	echo -n -e $"\nShutting down linq_httpd: "
+	killproc linq_httpd
+	echo -n -e $"\nShutting down linq_s2s: "
+	killproc linq_s2s
+	echo -n -e $"\nShutting down linq_resolver: "
+	killproc linq_resolver
+	echo -n -e $"\nShutting down linq_logd: "
+	killproc linq_logd
+	echo
+	return 0
+}
+ 
+restart(){
+    stop
+    start
+}
+
+
+# See how we were called.
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  status)
+    status linqd
+	status linq_c2s
+	status linq_sm
+	status linq_httpd
+	status linq_s2s
+	status linq_resolver
+	status linq_logd
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|status|restart}"
+    exit 1
+esac
+
+exit $?

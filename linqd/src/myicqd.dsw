@@ -1,0 +1,329 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "build_all"=.\build_all.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name c2s
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name db_mysql
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name db_odbc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_message
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_presence
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_roster
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_search
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_vcard
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name myicqd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name s2s
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sm
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name logd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_log
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_offline
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name resolver
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mod_admin
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name httpd
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "c2s"=.\c2s\c2s.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "db_mysql"=.\db\db_mysql.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "db_odbc"=.\DB\db_odbc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "httpd"=.\httpd\httpd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "libutils"=.\utils\libutils.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "logd"=.\logd\logd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mod_admin"=.\MODULES\mod_admin\mod_admin.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mod_log"=.\MODULES\mod_log\mod_log.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mod_message"=.\modules\mod_message\mod_message.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mod_offline"=.\MODULES\mod_offline\mod_offline.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mod_presence"=.\modules\mod_presence\mod_presence.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mod_roster"=.\modules\mod_roster\mod_roster.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mod_search"=.\modules\mod_search\mod_search.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "mod_vcard"=.\modules\mod_vcard\mod_vcard.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "myicqd"=.\myicqd\myicqd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "resolver"=.\resolver\resolver.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "s2s"=.\s2s\s2s.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sm"=.\sm\sm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libutils
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

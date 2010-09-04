@@ -1,0 +1,63 @@
+#include "logapp.h"
+#include "client.h"
+#include "debug.h"
+
+
+LogApp logApp;
+
+
+LogApp::LogApp()
+{
+	Socket::socketRegistry = &socketRegistry;
+
+	time(&curTime);
+}
+
+LogApp::~LogApp()
+{
+	while (!clientList.isEmpty()) {
+		Client *c = LIST_ENTRY(clientList.removeHead(), Client, list);
+		delete c;
+	}
+}
+
+bool LogApp::init(int argc, char *argv[])
+{
+	option.load(argc, argv);
+
+	if (!createSocket(SOCK_STREAM))
+		return false;
+
+	if (!bindAddress(option.ip, option.port)) {
+		ICQ_LOG("Can not bind on port %d", option.port);
+		return false;
+	}
+
+	listen(sockfd, 5);
+
+	addEvent(SOCKET_READ);
+
+	ICQ_LOG("logd is now started\n");
+	return true;
+}
+
+bool LogApp::onSocketRead()
+{
+	int fd = accept(sockfd, NULL, NULL);
+	if (fd < 0)
+		return false;
+
+	Client *c = new Client(fd);
+	clientList.add(&c->list);
+	return true;
+}
+
+void LogApp::run()
+{
+	while (true) {
+		time(&curTime);
+
+		if (!socketRegistry.poll(curTime))
+			break;
+	}
+}
